@@ -3,6 +3,7 @@ DimensionMismatch, BadLabelInput
 
 import matplotlib.pyplot as plt
 from matplotlib.axes import Axes
+from matplotlib.pyplot import figure
 
 class SanitiseInput:
     ''' Class with methods to sanitise expected inputs - making sure that they are
@@ -30,6 +31,9 @@ class SanitiseInput:
         ''' Make sure that the axis is good '''
         if isinstance(axis, Axes):
             return axis
+        elif axis == None:
+            fig = figure()
+            return fig.add_subplot(111)
         else:
             raise NotAnAxis, "require an Axis (matplotlib.axes.Axes) type"
                 

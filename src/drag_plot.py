@@ -118,7 +118,7 @@ class DragPlot(ClickPlot, object):  # object is there so that the super() call i
         DragPlot.lock = None
         
     def move_point(self, new_x, new_y):
-        # moves the selected point (indexed by self.index) to new coordinates
+        ''' moves the selected point (indexed by self.index) to new coordinates '''
         xdata = self.line.get_xdata() # get_xdata().copy() had to be used in past
         ydata = self.line.get_ydata()
         
@@ -134,9 +134,10 @@ class DragPlot(ClickPlot, object):  # object is there so that the super() call i
         self.selected_point.set_ydata(self.line.get_ydata()[i])
         
     def make_selected_point(self):
-        # Highlight for the selected data point
-        # Creates an extra point that is larger and transparent then data points
-        # animated=True makes it invisible (no points are selected initially)
+        ''' Highlight for the selected data point
+            Creates an extra point that is larger and transparent then data points
+            animated=True makes it invisible (no points are selected initially)
+        '''
         size = 3*self.line.get_markersize()
         color = self.line.get_markerfacecolor()
         point, = self.axis.plot(0,0,'o', 

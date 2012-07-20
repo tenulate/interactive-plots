@@ -30,7 +30,7 @@ def setup_variables():
 
 @with_setup(setup_variables)    
 def test_good_input():
-    'ZoomPlot(ax, f) should work with god input'
+    'ZoomPlot(ax, f) should work with good input'
     ZoomPlot(ax[0], g)
     
 @with_setup(setup_variables)    
@@ -60,14 +60,3 @@ def test_bad_changing_function():
     z = zoom[0]
     assert_raises(NotAFunction, z.set_function, 3)
     assert_raises(NotAFunction, z.set_function, ClickPlot)
-    
-    
-if __name__ == '__main__':
-    x = np.linspace(0,10)
-    y = lambda x: jn(0,x)
-    line, = plt.plot([0], [0])
-    ax = line.get_axes()
-    z = ZoomPlot(ax, y)
-    z.add_buttons()
-    z.connect()
-    plt.show()

@@ -3,6 +3,7 @@ from drag_plot import DragPlot
 class DragRoot(DragPlot):
     ''' Similar to DragPlot, but when points are dragged they remain fixed to 
         the function being studied '''
+    
     def __init__(self, line, root_function, label=None, select_radius=0.03):
         self.root_function = root_function
         super(DragRoot, self).__init__(line, label=label, select_radius=select_radius)
@@ -30,3 +31,25 @@ class DragRoot(DragPlot):
         # change the location of the select marker
         self.selected_point.set_xdata(self.line.get_xdata()[i])
         self.selected_point.set_ydata(self.line.get_ydata()[i])
+        
+
+if __name__ == '__main__':
+    ''' show DragPoint  in use with closest click on a skewed axis '''
+    
+    import numpy as np
+    import matplotlib.pyplot as plt
+    
+    xs = np.random.rand(5)*np.pi
+    ys = 1000*np.sin(xs)
+    x = np.linspace(0,2*np.pi,100)
+    y = 1000*np.sin(x)
+    
+    fig = plt.figure()
+    ax = fig.add_subplot(111)
+    line, = ax.plot(x,y)
+    points, = ax.plot(xs,ys, marker='o', linestyle='', markersize=6, color='red')
+    label=['a','b','c','d','hi']
+    f = lambda x: 1000*np.sin(x)
+    drag_point = DragRoot(points, f, label=label)
+
+    plt.show()
