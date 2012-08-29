@@ -1,0 +1,5 @@
+Author: Marko Milicevic
+Email: tenulate@gmail.com
+
+A project based on the python library "matplotlib" used for graphical plots.
+This allows plots to be selected and x,y points to be dragged with the mouse
